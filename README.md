@@ -8,4 +8,40 @@ Ramón Miguel Murcia Campillo
 2. Clonar el repo ttps://github.com/joseagcv/pontia-mlops-tutorial, en mi equipo le puse el alias 4.1-Devops.
 3. Copiar los archivos del repo copiado al nuevo repo creado.
 4. Agregar las carpetas /data y /models al .gitignore
-5. Copiamos el requirements de la Carpeta Ci en nuestro nuevo proyecto
+5. Copiamos el requirements de la Carpeta Ci en nuestro nuevo proyecto.
+6. Modificamos el main.py y modificamos el valor de MLFLOW_URI , quedando:
+    MLFLOW_URI = os. getenv("MLFLOW_URI", "http://Localhost:5001/")
+    - Nota; recuerdo que en la clase tambien se modifico el EXPERIMENT_NAME, de momento como no dice nada en las instrucciones no lo modifico, si es necesario lo cambio mas adelante y lo dejo anotado.
+    
+
+7. Arranco un servidor local de mlflow:
+    docker run -d --name mlflow -p 5001:5000 ghcr.io/mlflow/mlflow:v3.7.0 mlflow server --host 0.0.0.0 --port 5000 
+    - Nota; en las instrucciones usa como puertos -p 5000:5000, yo he puesto el local como 5001, para aprender a diferenciarlos y no confundirme 
+        Me dio error al lanzarlo por no tener abierto docker desktop, lo abro
+            ramonmurciacampillo@RamonMurcia ActividadModulo4 % docker run -d --name mlflow -p 5001:5000 ghcr.io/mlflow/mlflow:v3.7.0 mlflow server --host 0.0.0.0 --port 5000
+                Cannot connect to the Docker daemon at unix:///Users/ramonmurciacampillo/.docker/run/docker.sock. Is the docker daemon running?
+                zsh: command not found: server
+            ramonmurciacampillo@RamonMurcia ActividadModulo4 % docker run -d --name mlflow -p 5001:5000 ghcr.io/mlflow/mlflow:v3.7.0 mlflow 
+            server --host 0.0.0.0 --port 5000
+                Unable to find image 'ghcr.io/mlflow/mlflow:v3.7.0' locally
+                v3.7.0: Pulling from mlflow/mlflow
+                3669af84f2ec: Pull complete 
+                5e584f8f28c3: Pull complete 
+                ccaf924377f9: Pull complete 
+                954774345a61: Pull complete 
+                7360b233c860: Pull complete 
+                0ed2d686b548: Download complete 
+                Digest: sha256:4590656b2856508ba1eb6885cb9f4d2e747b164ed0d999fa542e4573843c4c8a
+                Status: Downloaded newer image for ghcr.io/mlflow/mlflow:v3.7.0
+                b4e9858adc548c9b3da59980d2847bea54043ebad952becbfe89d733907e610e
+                zsh: command not found: server
+8. Probar el codigo en local, para ello ejecuto los siguiente comandos:
+        ramonmurciacampillo@RamonMurcia ActividadModulo4 %  python3.12 -m venv venv
+        ramonmurciacampillo@RamonMurcia ActividadModulo4 %  source venv/bin/activate
+        ((venv) ) ramonmurciacampillo@RamonMurcia ActividadModulo4 % pip install -r requirements.txt
+    - modificado tambien EXPERIMENT_NAME quedando:
+        EXPERIMENT_NAME = os.getenv("EXPERIMENT_NAME", "grupo07-adult-income")
+    - pruebo si se ve la app en http://127.0.0.1:5001
+    - La app esta levantada
+    
+
