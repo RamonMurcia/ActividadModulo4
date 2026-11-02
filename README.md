@@ -8,4 +8,4 @@ Ramón Miguel Murcia Campillo
 2. Clonar el repo ttps://github.com/joseagcv/pontia-mlops-tutorial, en mi equipo le puse el alias 4.1-Devops.
 3. Copiar los archivos del repo copiado al nuevo repo creado.
 4. Agregar las carpetas /data y /models al .gitignore
-5. 
+5. Copiamos el requirements de la Carpeta Ci en nuestro nuevo proyecto
