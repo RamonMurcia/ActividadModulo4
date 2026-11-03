@@ -43,5 +43,13 @@ Ramón Miguel Murcia Campillo
         EXPERIMENT_NAME = os.getenv("EXPERIMENT_NAME", "grupo07-adult-income")
     - pruebo si se ve la app en http://127.0.0.1:5001
     - La app esta levantada
+9. Anado los secrets y varaiables de entorno en staging en github.com
+    - Secrets:
+        - AZURE_TENANT_ID
+        - AZURE_CLIENT_ID
+        - AZURE_CLIENT_SECRET
+    - variables de entorno:
+        - MLFLOW_URL: azureml://spaincentral.api.azureml.ms/mlflow/v1.0/subscriptions/b17a3b65-c9df-48c7-9b32-8cd81f620076/resourceGroups/rg-albertog-devops/providers/Microsoft.MachineLearningServices/workspaces/devops-mlw
+        - EXPERIMENT_NAME: grupo07-adult-income
     
 
