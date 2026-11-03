@@ -5,15 +5,19 @@ Componentes:
 Ramón Miguel Murcia Campillo
 
 1. Crear en github desktop el repo ActividadModulo
+
 2. Clonar el repo ttps://github.com/joseagcv/pontia-mlops-tutorial, en mi equipo le puse el alias 4.1-Devops.
+
 3. Copiar los archivos del repo copiado al nuevo repo creado.
+
 4. Agregar las carpetas /data y /models al .gitignore
+
 5. Copiamos el requirements de la Carpeta Ci en nuestro nuevo proyecto.
+
 6. Modificamos el main.py y modificamos el valor de MLFLOW_URI , quedando:
     MLFLOW_URI = os. getenv("MLFLOW_URI", "http://Localhost:5001/")
     - Nota; recuerdo que en la clase tambien se modifico el EXPERIMENT_NAME, de momento como no dice nada en las instrucciones no lo modifico, si es necesario lo cambio mas adelante y lo dejo anotado.
     
-
 7. Arranco un servidor local de mlflow:
     docker run -d --name mlflow -p 5001:5000 ghcr.io/mlflow/mlflow:v3.7.0 mlflow server --host 0.0.0.0 --port 5000 
     - Nota; en las instrucciones usa como puertos -p 5000:5000, yo he puesto el local como 5001, para aprender a diferenciarlos y no confundirme 
@@ -35,6 +39,7 @@ Ramón Miguel Murcia Campillo
                 Status: Downloaded newer image for ghcr.io/mlflow/mlflow:v3.7.0
                 b4e9858adc548c9b3da59980d2847bea54043ebad952becbfe89d733907e610e
                 zsh: command not found: server
+
 8. Probar el codigo en local, para ello ejecuto los siguiente comandos:
         ramonmurciacampillo@RamonMurcia ActividadModulo4 %  python3.12 -m venv venv
         ramonmurciacampillo@RamonMurcia ActividadModulo4 %  source venv/bin/activate
@@ -43,6 +48,7 @@ Ramón Miguel Murcia Campillo
         EXPERIMENT_NAME = os.getenv("EXPERIMENT_NAME", "grupo07-adult-income")
     - pruebo si se ve la app en http://127.0.0.1:5001
     - La app esta levantada
+
 9. Anado los secrets y varaiables de entorno en staging en github.com
     - Secrets:
         - AZURE_TENANT_ID
@@ -51,13 +57,18 @@ Ramón Miguel Murcia Campillo
     - variables de entorno:
         - MLFLOW_URL: azureml://spaincentral.api.azureml.ms/mlflow/v1.0/subscriptions/b17a3b65-c9df-48c7-9b32-8cd81f620076/resourceGroups/rg-albertog-devops/providers/Microsoft.MachineLearningServices/workspaces/devops-mlw
         - EXPERIMENT_NAME: grupo07-adult-income
+
 10. Creo una carpeta en la raiz del repositorio con el nombre “.github/workflows”.
+
 11. Copio el build.yml de la carpeta CI de los recursos
     - Error en action (Set up Python).
+
 12. cambio la version de python a 3.12
     - Error en action (Train ans save model).
+
 13. Reparo el pip install, step Install dependencies
     - Error en action (Train ans save model).
+
 14. Descargo los datos con un task dentro de la pipeline, creo el step Download and extract dataset
       - name: Download and extract dataset
         shell: bash
@@ -77,17 +88,20 @@ Ramón Miguel Murcia Campillo
           echo "Dataset extracted to ./data/raw"
           find ./data/raw -maxdepth 2 -type f  
     - Error en action (Train ans save model).
+
 15. Añado al build el environmet
          environment: Staging
    -  Error en action (Train ans save model). Estaba todo el ratro dando error de ruta de main.py
         Run python main.py
         python: can't open file '/home/runner/work/ActividadModulo4/ActividadModulo4/main.py': [Errno 2] No such file or directory
+
 16. Corrijo la ruta del main.py en el step Train ans Save model, añadiendo delante src/
       - name: Train and save model
         run: |
           python src/main.py
     - Error en action (Train ans save model), pero esta vez ha estado mucho mas timepo y el log es mucho mayor, dando este error:
         mlflow.exceptions.MlflowException: API request to http://Localhost:5001/api/2.0/mlflow/experiments/get-by-name failed with exception HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/2.0/mlflow/experiments/get-by-name?experiment_name=grupo07-adult-income (Caused by NewConnectionError("HTTPConnection(host='localhost', port=5001): Failed to establish a new connection: [Errno 111] Connection refused"))
+
 17. Añado las variables de entorno y secretos en el step Train ans Save model
         env:
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
@@ -96,6 +110,42 @@ Ramón Miguel Murcia Campillo
           EXPERIMENT_NAME: ${{ vars.EXPERIMENT_NAME }}
           MLFLOW_URI: ${{ vars.MLFLOW_URL }}
     - Termina el build sin errores
-18.  Copio el integration.yml de la carpeta CI de los recursos
-    
+
+18.  Copio el integration.yml de la carpeta CI de los recursos.
+
+19. Aparece en action de github, no se ejecuta porque solo se ejecuta cuando es un pull request, como indica al principio del yml
+    on:
+      pull_request:
+
+20. Cambio la versión de Python a 3.12 en integration.yml y creo la rama feature/integration para lanzar el workflow mediante un Pull Request.
+
+21. En github comparo el pull request y autorizo la pr, el action de integration se lanza
+    - Error en action (Run tests and save exit code),
+        Run mkdir -p test-results
+        /home/runner/work/_temp/72eb35d7-6acc-4a48-b831-8bcee4177050.sh: line 2: pytest: command not found
+        Error: Process completed with exit code 127.
+
+22. Reparo el pip install, step Install dependencies 
+     - Error en action (Run tests and save exit code)
+        /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/coverage/inorout.py:560: CoverageWarning: Module model was never imported. (module-not-imported); see https://coverage.readthedocs.io/en/7.17.1/messages.html#warning-module-not-imported
+        self.warn(f"Module {pkg} was never imported.", slug="module-not-imported")
+        /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/coverage/control.py:967: CoverageWarning: No data was collected. (no-data-collected); see https://coverage.readthedocs.io/en/7.17.1/messages.html#warning-no-data-collected
+        self._warn("No data was collected.", slug="no-data-collected")
+        /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pytest_cov/plugin.py:311: CovReportWarning: Failed to generate report: No data to report.
+        warnings.warn(CovReportWarning(message))
+
+23. Añado los steps como en el la pipeline de build, el step que descarga el modelo y el step que descarga y extrae el dataset
+    - Error en action (Download Model), me faltaba añadir el environmet
+
+24. Añado el environmet staging
+    - Error en action (Download Model), daba 403 porque scripts/download_model.py tenía una URL antigua hardcodeada y no leía las variables de entorno MLFLOW_URI ni EXPERIMENT_NAME.
+
+25. Modifico el scripts/download_model.py añado las variables de entorno MLFLOW_URI y EXPERIMENT_NAME y  uso os.getenv().
+
+26. Agrego un Ruleset sobre la rama main: 
+    -  “Restrict deletions” 
+    -  “Block force pushed” 
+    -  “Require status checks to pass”. Sobre nuestra pipeline. 
+    -  “Require branches to be up to date before merging” 
+
 
