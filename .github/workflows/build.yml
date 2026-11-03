@@ -47,6 +47,12 @@ jobs:
       - name: Train and save model
         run: |
           python src/main.py
+        env:
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          EXPERIMENT_NAME: ${{ vars.EXPERIMENT_NAME }}
+          MLFLOW_URI: ${{ vars.MLFLOW_URL }}
           
       - name: Publicar artefactos
         uses: actions/upload-artifact@v4

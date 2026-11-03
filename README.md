@@ -61,6 +61,12 @@ Ramón Miguel Murcia Campillo
 14. Descargo los datos con un task dentro de la pipeline, creo el step Download and extract dataset
     Error en action (Train ans save model).
 15. Añado al build la linea; environment: Staging
-16. Corrijo la ruta del main.py, añadiendo delante src/
+    Error en action (Train ans save model). Estaba todo el ratro dando error de ruta de main.py
+        Run python main.py
+        python: can't open file '/home/runner/work/ActividadModulo4/ActividadModulo4/main.py': [Errno 2] No such file or directory
+16. Corrijo la ruta del main.py en el step Train ans Save model, añadiendo delante src/
+    Error en action (Train ans save model), pero esta vez ha estado mucho mas timepo y el log es mucho mayor, dando este error:
+        mlflow.exceptions.MlflowException: API request to http://Localhost:5001/api/2.0/mlflow/experiments/get-by-name failed with exception HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/2.0/mlflow/experiments/get-by-name?experiment_name=grupo07-adult-income (Caused by NewConnectionError("HTTPConnection(host='localhost', port=5001): Failed to establish a new connection: [Errno 111] Connection refused"))
+17. Añado las variables de entorno y secretos en el step Train ans Save model
     
 
