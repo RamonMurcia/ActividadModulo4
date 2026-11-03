@@ -54,5 +54,6 @@ Ramón Miguel Murcia Campillo
 10. Creo una carpeta en la raiz de nuestro repositorio con el  “.github/workflows”.
 11. Copio el build.yml
 12. cambio la version de python a 3.12
-13. Reparo el pip install
+13. Reparo el pip install, step Install dependencies
+14. Descargo los datos con un task dentro de la pipeline, creo el step Download and extract dataset
 
