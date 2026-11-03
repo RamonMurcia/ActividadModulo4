@@ -46,7 +46,7 @@ jobs:
       
       - name: Train and save model
         run: |
-          python main.py
+          python src/main.py
           
       - name: Publicar artefactos
         uses: actions/upload-artifact@v4

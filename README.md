@@ -61,5 +61,6 @@ Ramón Miguel Murcia Campillo
 14. Descargo los datos con un task dentro de la pipeline, creo el step Download and extract dataset
     Error en action (Train ans save model).
 15. Añado al build la linea; environment: Staging
+16. Corrijo la ruta del main.py, añadiendo delante src/
     
 
