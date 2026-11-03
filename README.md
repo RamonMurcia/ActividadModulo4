@@ -115,4 +115,8 @@ Ramón Miguel Murcia Campillo
         /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pytest_cov/plugin.py:311: CovReportWarning: Failed to generate report: No data to report.
         warnings.warn(CovReportWarning(message))
 23. Añado los steps como en el la pipeline de build, el step que descarga el modelo y el step que descarga y extrae el dataset
+    - Error en action (Download Model), me faltaba añadir el environmet
+24. Añado el environmet staging
+
+
 
