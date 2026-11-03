@@ -7,7 +7,7 @@ jobs:
   integrate:
     runs-on: ubuntu-latest
     environment: Staging
-    
+
     permissions:
       contents: read
       pull-requests: write

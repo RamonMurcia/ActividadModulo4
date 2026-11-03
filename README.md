@@ -142,10 +142,16 @@ Ramón Miguel Murcia Campillo
 
 25. Modifico el scripts/download_model.py añado las variables de entorno MLFLOW_URI y EXPERIMENT_NAME y  uso os.getenv().
 
+26. El pipeline se ha ejecutado correctamente y he hecho l merge
+
 26. Agrego un Ruleset sobre la rama main: 
     -  “Restrict deletions” 
     -  “Block force pushed” 
     -  “Require status checks to pass”. Sobre nuestra pipeline. 
     -  “Require branches to be up to date before merging” 
+
+27. Revisando los siguientes pasos me acabo de dar cuenta que no habia añadido el if: always() en el step Run test and save exit code, por lo que rlo añado y vuelvo a hacer la prueba de quitarlo y ponerlo con las ruleset creadas.
+
+28. Quito el if always y reviso el merge
 
 
