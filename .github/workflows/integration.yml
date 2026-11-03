@@ -24,6 +24,34 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Download Model
+        run: |
+          python scripts/download_model.py
+        env:
+          AZURE_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
+          AZURE_CLIENT_ID: ${{secrets.AZURE_CLIENT_ID}}
+          AZURE_CLIENT_SECRET: ${{secrets.AZURE_CLIENT_SECRET}}
+          EXPERIMENT_NAME: ${{ vars.EXPERIMENT_NAME }}
+          MLFLOW_URI: ${{ vars.MLFLOW_URL }}
+
+      - name: Download and extract dataset
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p ./data
+
+          curl -fL \
+            "https://archive.ics.uci.edu/static/public/20/census+income.zip" \
+            -o /tmp/census-income.zip
+
+          unzip -o /tmp/census-income.zip -d ./data
+
+          rm /tmp/census-income.zip
+
+          echo "Dataset extracted to ./data"
+          find ./data -maxdepth 2 -type f
+
       - name: Run tests and save exit code
         id: tests
         run: |

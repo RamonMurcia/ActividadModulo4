@@ -107,3 +107,12 @@ Ramón Miguel Murcia Campillo
         /home/runner/work/_temp/72eb35d7-6acc-4a48-b831-8bcee4177050.sh: line 2: pytest: command not found
         Error: Process completed with exit code 127.
 22. Reparo el pip install, step Install dependencies 
+     - Error en action (Run tests and save exit code)
+        /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/coverage/inorout.py:560: CoverageWarning: Module model was never imported. (module-not-imported); see https://coverage.readthedocs.io/en/7.17.1/messages.html#warning-module-not-imported
+        self.warn(f"Module {pkg} was never imported.", slug="module-not-imported")
+        /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/coverage/control.py:967: CoverageWarning: No data was collected. (no-data-collected); see https://coverage.readthedocs.io/en/7.17.1/messages.html#warning-no-data-collected
+        self._warn("No data was collected.", slug="no-data-collected")
+        /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pytest_cov/plugin.py:311: CovReportWarning: Failed to generate report: No data to report.
+        warnings.warn(CovReportWarning(message))
+23. Añado los steps como en el la pipeline de build, el step que descarga el modelo y el step que descarga y extrae el dataset
+
