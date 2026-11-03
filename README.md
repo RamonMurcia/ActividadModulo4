@@ -54,4 +54,5 @@ Ramón Miguel Murcia Campillo
 10. Creo una carpeta en la raiz de nuestro repositorio con el  “.github/workflows”.
 11. Copio el build.yml
 12. cambio la version de python a 3.12
+13. Reparo el pip install
 
