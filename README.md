@@ -51,5 +51,7 @@ Ramón Miguel Murcia Campillo
     - variables de entorno:
         - MLFLOW_URL: azureml://spaincentral.api.azureml.ms/mlflow/v1.0/subscriptions/b17a3b65-c9df-48c7-9b32-8cd81f620076/resourceGroups/rg-albertog-devops/providers/Microsoft.MachineLearningServices/workspaces/devops-mlw
         - EXPERIMENT_NAME: grupo07-adult-income
+10. Creo una carpeta en la raiz de nuestro repositorio con el  “.github/workflows”.
+11. Copio el build.yml
     
 
