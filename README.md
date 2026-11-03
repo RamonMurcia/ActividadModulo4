@@ -96,6 +96,9 @@ Ramón Miguel Murcia Campillo
           EXPERIMENT_NAME: ${{ vars.EXPERIMENT_NAME }}
           MLFLOW_URI: ${{ vars.MLFLOW_URL }}
     - Termina el build sin errores
-18.  Copio el integration.yml de la carpeta CI de los recursos
-    
+18.  Copio el integration.yml de la carpeta CI de los recursos.
+19. Aparece en action de github, no se ejecuta porque solo se ejecuta cuando es un pull request, como indica al principio del yml
+    on:
+      pull_request:
+20. Cambio la versión de Python a 3.12 en integration.yml y creo la rama feature/integration para lanzar el workflow mediante un Pull Request.
 
