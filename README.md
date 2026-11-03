@@ -101,4 +101,9 @@ Ramón Miguel Murcia Campillo
     on:
       pull_request:
 20. Cambio la versión de Python a 3.12 en integration.yml y creo la rama feature/integration para lanzar el workflow mediante un Pull Request.
-
+21. En github comparo el pull request y autorizo la pr, el action de integration se lanza
+    - Error en action (Run tests and save exit code),
+        Run mkdir -p test-results
+        /home/runner/work/_temp/72eb35d7-6acc-4a48-b831-8bcee4177050.sh: line 2: pytest: command not found
+        Error: Process completed with exit code 127.
+22. Reparo el pip install, step Install dependencies 
