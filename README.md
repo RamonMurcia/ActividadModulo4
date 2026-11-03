@@ -152,6 +152,6 @@ Ramón Miguel Murcia Campillo
 
 27. Revisando los siguientes pasos me acabo de dar cuenta que no habia añadido el if: always() en el step Run test and save exit code, por lo que rlo añado y vuelvo a hacer la prueba de quitarlo y ponerlo con las ruleset creadas.
 
-28. 
+28. Quito el if always y reviso el merge
 
 
