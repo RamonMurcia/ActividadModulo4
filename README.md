@@ -51,9 +51,15 @@ Ramón Miguel Murcia Campillo
     - variables de entorno:
         - MLFLOW_URL: azureml://spaincentral.api.azureml.ms/mlflow/v1.0/subscriptions/b17a3b65-c9df-48c7-9b32-8cd81f620076/resourceGroups/rg-albertog-devops/providers/Microsoft.MachineLearningServices/workspaces/devops-mlw
         - EXPERIMENT_NAME: grupo07-adult-income
-10. Creo una carpeta en la raiz de nuestro repositorio con el  “.github/workflows”.
-11. Copio el build.yml
+10. Creo una carpeta en la raiz del repositorio con el nombre “.github/workflows”.
+11. Copio el build.yml de la carpeta CI de los recursos
+    Error en action (Set up Python).
 12. cambio la version de python a 3.12
+    Error en action (Train ans save model).
 13. Reparo el pip install, step Install dependencies
+    Error en action (Train ans save model).
 14. Descargo los datos con un task dentro de la pipeline, creo el step Download and extract dataset
+    Error en action (Train ans save model).
+15. Añado al build la linea; environment: Staging
+    
 
