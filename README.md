@@ -164,6 +164,8 @@ Desarrollado por Javier:
 
     5. Finalmente, creé la pull request para integrar los cambios.
 
+    Problemas encontrados: El access token no tenía todos los permisos necesarios; Lectura y escritura, por eso el pipeline deployment ha fallado. Los cambiamos y volvimos a ejecutar.
+
 ## ¿En qué consiste el proyecto?
 
 ActividadModulo4 reúne el código para entrenar y evaluar un modelo de aprendizaje automático que predice el nivel de ingresos a partir de datos demográficos, junto con las automatizaciones para probarlo y desplegar una API que permite usarlo.
