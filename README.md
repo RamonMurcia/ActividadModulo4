@@ -164,7 +164,8 @@ Desarrollado por Javier:
 
     5. Finalmente, creé la pull request para integrar los cambios.
 
-    Problemas encontrados: El access token no tenía todos los permisos necesarios; Lectura y escritura, por eso el pipeline deployment ha fallado. Los cambiamos y volvimos a ejecutar.
+    Problemas encontrados: El access token no tenía todos los permisos necesarios; Lectura y escritura, por eso el pipeline deployment ha fallado. Los cambiamos y volvimos a ejecutar. Se nos ha olvidado poner el nombre del grupo, por lo que no hay permisos suficientes.
+    Después de cada merge eliminamos la rama con la que se realizó el pull request
 
 ## ¿En qué consiste el proyecto?
 
